@@ -1,3 +1,4 @@
+<?php include 'counter.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
                 <li onclick="location.href='https://zegzamin.github.io/inf03.html'">INF.03 <br> (podczas prac)</li>
                 <li onclick="location.href='https://zegzamin.github.io/inf04.html'">INF.04 <br> (narazie nie dostępne)</li>
             </ul>
-        <section>
+        </section>
 
         <section class="author">
             <h2>O autorze:</h2>
@@ -32,6 +33,7 @@
 
     <footer>
         <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <p>Liczba odwiedzin: <?php echo $counter; ?></p>
         <div class="wave"></div>
         <div class="wave"></div>
         <div class="wave"></div>
