@@ -1,0 +1,31 @@
+#zmienna{
+    color: lightgreen;
+}
+
+#komentarz{
+    color: gray;
+}
+
+#slowaKluczowe{
+    color: cyan;
+}
+
+#nazwaZmiennej{
+    color: rgba(157, 249, 252, 0.884);
+}
+
+#nazwaFunkcji{
+    color: green;
+}
+
+#liczby{
+    color: orange;
+}
+
+#operatory{ /* +, -, x, /, ^2, pierw*/
+    color: purple;
+}
+
+#lancuchZnakow {
+    color: red;
+}
