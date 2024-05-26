@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Pobieranie Elementu</title>
+    <link rel="stylesheet" href="styleJavascript.css">
+    <link rel="stylesheet" href="styleKod.css">
+    <script src="skrypt.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>JavaScript</i>! Tutaj są materiały, które pomogą się przygotować z JavaScript! </h1>
+    </header>
+
+        <section id="tekst">
+            <h1>Modyfikowanie Atrybutów HTML Danego Elementu - JavaScript</h1>
+            <p>Jednym z ciekawych motywów, który de facto nie pojawił się jeszcze na egzaminie, natomiast o który często pojawia się pytanie, jest edycja atrybutu, np. src za pomocą Javascript. <br>Jest to bardzo proste zagadnienie, wymagające jedynie wiedzy z lekcji 2.</p>
+            
+            <h1>Teoretycznie o zmianie atrybutu</h1>
+            <p>Jak pamiętasz z lekcji o zmianie stylu, musieliśmy pobrać z dokumentu element za pomocą document.getElementById("id"), a potem po kropce wstawić albo style, <br>aby edytować styl CSS, albo innerHTML, aby edytować tekst elementu. W przypadku dowolnego atrybutu będziemy działać tak samo. <br>Po document.getElementById("id") po kropce podamy nasz atrybut.</p>
+            <p>Przykładowo: Zmień zdjęcie elementu o id zdjecie na plik o nazwie “zad1.png".</p>
+                        
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    document.getElementById("zdjecie").src = "zad1.png";
+                </code></pre>
+            </div>
+
+            <p>Teraz zróbmy zadanie, poniżej macie szkielet HTML</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &lt!DOCTYPE html&gt
+    &lthtml lang="en"&gt
+    &lthead&gt
+        &ltmeta charset="UTF-8"&gt
+        &ltmeta name="viewport" content="width=device-width, initial-scale=1.0"&gt
+        &lttitle&gtLekcja 4 - JavaScript&lt/title&gt
+    &lt/head&gt
+                    
+    &ltbody&gt
+        &lth1&gt Testowanie &lt/h1&gt
+        &ltimg src="" alt="" id="wybor"&gt
+        &ltbutton id="laptop"&gtLaptop&lt/button&gt
+        &ltbutton id="lodka"&gtŁódka&lt/button&gt
+        &ltbutton id="metro"&gtMetro&lt/button&gt
+    &lt/body&gt
+    &ltscript&gt
+        //tu będzie nasz skrypt  
+    &lt/script&gt
+    &lt/html&gt
+                </code></pre>
+            </div>
+
+            <p>Pobierz sobie również 3 obrazki, będą one się znajdować w folderze z kodem do tej strony. Będą się one nazywać kolejno: laptop.jpg, lodka.jpg, metro.jpg</p>
+            <p>Teraz do naszych przycisków dodajmy sobie atrybuty onclick, każdy z tych przycisków będzie mieć inną funkcję</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &ltbutton id="laptop" onclick="laptop()"&gtLaptop&lt/button&gt
+    &ltbutton id="lodka" onclick="lodka()"&gtŁódka&lt/button&gt
+    &ltbutton id="metro" onclick="metro()"&gtMetro&lt/button&gt
+
+    &ltscript&gt
+        //tu będzie nasz skrypt  
+    &lt/script&gt
+                </code></pre>
+            </div>
+            
+
+            <p>Teraz napiszmy funkcję dla laptopa, która będzie brać src z img i będzie dawać obrazek laptop.jpg</p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function laptop(){
+        document.getElementById("wybor").src = "laptop.jpg";
+    }
+                </code></pre>
+            </div>
+    
+            <p>Teraz jeżeli naciśniemy przycisk Laptop, powinien nam się wyświetlić obraz "laptop.jpg"</p>
+            <p>Powtórzmy ten proces dla reszty przycisków: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function laptop(){
+        document.getElementById("wybor").src = "laptop.jpg";
+    }
+
+    function lodka(){
+        document.getElementById("wybor").src = "lodka.jpg";
+    }
+
+    function metro(){
+        document.getElementById("wybor").src = "metro.jpg";
+    }
+                </code></pre>
+            </div>
+
+            <p>W ten sposób możemy na stronie poprzez przyciski zmieniać style img, przez co zmieniają się nam obrazki</p>
+
+        </section>
+
+
+        <footer>    
+            <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </footer>
+
+</body>
+</html>
