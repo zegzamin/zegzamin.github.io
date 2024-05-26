@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Wprowadzenie</title>
+    <link rel="stylesheet" href="styleJavascript.css">
+    <script src="skrypt.js"></script>
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>JavaScript</i>! Tutaj są materiały, które pomogą się przygotować z JavaScript! </h1>
+    </header>
+
+
+        <section id="tekst">
+                <h1> Wprowadzenie do JavaScript. Zmienne, instrukcje warunkowe </h1>
+                <p> EE.09/INF.03 składa się z 5 części, składających się na wszystkie umiejętności potrzebne na egzamin zawodowy. Tematem tej sekcji jest JavaScript. </p>
+                <p>JavaScript, podobnie jak pozostałe części, zaczynamy od podstaw, więc nie masz się czym martwić. Poruszymy wyłącznie kwestie potrzebne do egzaminu, pomijając zbędne zapychacze znajdujące się w podręcznikach. Zadbam jednak o nowoczesne podejście do tematu, więc wiedza, którą tu otrzymasz, będzie przydatna nawet po egzaminie w pracy z kodem.</p>
+                <p>JavaScript to język skryptowy - jest interpretowany po stronie przeglądarki (w porównaniu z PHP, który jest wykonywany po stronie Serwera). <br>Można odróżnić JavaScript od PHP na stronie, gdy na przykład klikamy jakiś element, to JavaScript wykona go bez przeładowania strony, a PHP zrobi to z przeładowaniem.</p>
+                
+                <br>
+                <h1>JavaScript i HTML - jak to połączyć?</h1>
+                <p>Połączenie skryptu JavaScript z dokumentem HTML jest możliwe na dwa sposoby - poprzez atrybut src w sekcji script, więc osobny plik .js albo w sekcji &ltscript&gt, bezpośrednio w dokumencie.</p>
+                
+                <br>
+                <h1>Zmienne w JavaScript</h1>
+                <p>Zmienne w JavaScript, zupełnie jak w PHP, są automatycznie dopasowujące swój typ - nie ma potrzebny definiowania na przykład, że zmienna jest typu liczby całkowitej albo napisu <br>(oznacza to, że JavaScript jest językiem słabo typowanym co ma swoje minusy). 
+                    JavaScript sam dopasowuje typ zmiennej do wartości, którą przyjmuje.</p>
+                <p>Aby utworzyć zmienną, musimy skorzystać ze słówka kluczowego let, a po nim podać nazwę zmiennej (nie korzystamy z var, gdyż jest przestarzałe i jest niezalecane).</p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    <span id="zmienna">let</span> <span id="nazwaZmiennej">zegzamin</span> = <span id="lancuchZnakow">"zdane"</span>;
+</code></pre>
+                </div>
+                <br>
+                <h1>console.log i proste debugowanie</h1>
+                <p>Czasem zdarzają się sytuacje, że coś nie działa jak powinno. Możemy skorzystać z funkcji console.log, która zapisuje dany tekst bądź zmienną w konsoli deweloperskiej. Tam będziemy mogli podejrzeć, czy nasz kod wykonuje się poprawnie, czy zmienne przyjmują odpowiednią wartość i tak dalej</p>
+
+                <br>
+                <h1>Instrukcje warunkowe w JavaScript</h1>
+                <p>Na egzaminie pojawiło się wymagające użycia instrukcji warunkowych, warto więc o nich wspomnieć. <br>Konstrukcja jest identyczna jak w PHP i innych językach
+                    programowania: słówko if, a w nawiasie warunek.</p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    <span id="slowaKluczowe">if</span> (<span id="zmienna">warunekPierwszy</span>) {
+        <span id="komentarz">//kod wykonywany, jeżeli warunek jest prawdziwy</span>
+    } <span id="slowaKluczowe">else if</span>(<span id="zmienna">warunekDrugi</span>) {
+        <span id="komentarz">//kod wykonywany, jeżeli warunekPierwszy jest niepoprawny, lecz warunekDrugi jest prawdziwy</span>
+    } <span id="slowaKluczowe"> else</span> {
+        <span id="komentarz">//kod wykonywany, jeżeli żaden z powyższych warunków nie jest prawdziwy</span>
+    }
+</code></pre>
+
+
+                </div>
+
+                <i><p>!! Uwaga !! Skrypt chcemy wyświetlać pod elementem body (gdyż nie chcemy go wyświetlać, on ma dokonywać obliczeń itp). <br>W head też nie dodajemy &ltscript&gt, gdyż w tedy byłoby to interpretowane że coś wysyłamy przeglądarce, czego nie chcemy.</p></i>
+                <p>Zatem pomiędzy znaczniki &ltscript&gt &lt/script&gt wpisujemy sobie nasz kod.</p>
+                <p>Zróbmy sobie na przykład zmienną o nazwie zmienna, niech będzie mieć wartość 10, zatem:</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    let zmienna = 10;
+                    </code></pre>
+                </div>
+                <p>Teraz na przykład możemy sobie zmodyfikować naszą zmienną, dodajmy sobie na przykład do niej 10, zatem:</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    let zmienna = 10;
+    zmienna = zmienna + 10;
+                    </code></pre>
+                </div>
+                <p>Teraz wyświetlmy za pomocą console.log() zmienną w konsoli:</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    let zmienna = 10;
+    zmienna = zmienna + 10;
+    console.log(zmienna);
+                    </code></pre>
+                </div>
+                <p>Teraz jeżeli na naszej stronie na której mamy ten skrypt podłączony, klikniemy "Zbadaj" oraz przejdziemy do zakładki "Konsola", wyświetli się nam wynik: </p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    20
+                    </code></pre>
+                </div>
+
+                <h1>Warunki IF</h1>
+                <p>Niech nasza zmienna będzie równa na przykład 10</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    let zmienna = 10;
+                       </code></pre>
+                </div>
+                <p>Teraz sobie dodajmy do tego warunek, na przykład, jeżeli nasza zmienna wynosi 10, to niech wypisze, że "Zmienna jest równa 10!"</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    let zmienna = 10;
+    if(zmienna == 10) { //Uwaga!! Porównując zmienną do liczb używamy == a nie =
+        console.log("Zmienna jest równa 10!");
+    }
+                       </code></pre>
+                </div>
+                <p>Wynik tego skryptu w Konsoli przeglądarkowej wyświetli nam napis: </p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    Zmienna jest równa 10!
+                       </code></pre>
+                </div>
+                <p>Oczywiście możemy to sobie rozbudować, możemy na przykład do tego IFa dodać warunek ELSE IF oraz ELSE (ELSE będący zawsze na końcu)</p>
+                <p>Zmieńmy sobie zatem naszą zmienną 'zmienna', żeby przechowywała wartość 9, oraz dodajmy IFa sprawdzającego, czy nasza 'zmienna' ma wartość 10.</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    let zmienna = 9;
+    if(zmienna == 10) {
+            console.log("Zmienna jest równa 10!");
+    } else {
+        console.log("Zmienna nie jest równa 10.")
+    }
+                       </code></pre>
+                </div>
+                <p>ELSE zawsze będzie wykonywać jakiś kod, jeżeli powyższe warunki były nieprawdziwe, zatem wynikiem powyższego kodu będzie napis w Konsoli:</p>
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+    Zmienna nie jest równa 10.
+                    </code></pre>
+                </div>
+                <p>Oczywiście nie jest równa, gdyż dane przypisane zmiennej 'zmienna' nie wynosi 10, lecz 9.</p>
+        
+    
+    
+        
+
+
+
+
+
+
+                <!--
+                <h1> Pobieranie elementu ze strony. Zmiana tekstu i stylu. </h1>
+                <p> Witam na lekcji wprowadzającej z JS </p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+def przyklad():
+    print("Przykładowy kod z wcięciami")
+    if True:
+        print("To jest wewnątrz bloku if")
+                    </code></pre>
+                </div>
+
+                <h1> Wywołanie funkcji za pomocą przycisku </h1>
+                <p> Witam na lekcji wprowadzającej z JS </p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+def przyklad():
+    print("Przykładowy kod z wcięciami")
+    if True:
+        print("To jest wewnątrz bloku if")
+                    </code></pre>
+                </div>
+
+
+                <h1> Modyfikowanie dowolnych atrybutów HTML </h1>
+                <p> Witam na lekcji wprowadzającej z JS </p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+def przyklad():
+    print("Przykładowy kod z wcięciami")
+    if True:
+        print("To jest wewnątrz bloku if")
+                    </code></pre>
+                </div>
+
+                <h1> Alert, Prompt, parseInt </h1>
+                <p> Witam na lekcji wprowadzającej z JS </p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+def przyklad():
+    print("Przykładowy kod z wcięciami")
+    if True:
+        print("To jest wewnątrz bloku if")
+                    </code></pre>
+                </div>
+
+
+                <h1> Math.round, Math.ceil, Math.abs </h1>
+                <p> Witam na lekcji wprowadzającej z JS </p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+def przyklad():
+    print("Przykładowy kod z wcięciami")
+    if True:
+        print("To jest wewnątrz bloku if")
+                    </code></pre>
+                </div>
+
+
+                <h1> Przykładowe zadanie egzaminacyjne </h1>
+                <p> Witam na lekcji wprowadzającej z JS </p>
+
+                <div class="kontener-kod">
+                    <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                    <pre><code>
+def przyklad():
+    print("Przykładowy kod z wcięciami")
+    if True:
+        print("To jest wewnątrz bloku if")
+                    </code></pre>
+                </div>
+
+            -->
+
+        
+        </section>
+
+    <!--
+                &ltiostream&gt
+                to je do < i >1
+            
+    -->
+
+   
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+
+</body>
+</html>
+
+
+

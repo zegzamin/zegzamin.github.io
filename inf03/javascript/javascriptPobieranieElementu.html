@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Pobieranie Elementu</title>
+    <link rel="stylesheet" href="styleJavascript.css">
+    <link rel="stylesheet" href="styleKod.css">
+    <script src="skrypt.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>JavaScript</i>! Tutaj są materiały, które pomogą się przygotować z JavaScript! </h1>
+    </header>
+
+
+
+        <section id="tekst">
+            <h1>JavaScript - Pobieranie Elementów</h1>
+            <p>Każdy element w HTML znajduje się po renderze (wyświetleniu) strony w drzewiem DOM. To takie drzewo posiadające każdy element HTML, który został zdefiniowany.</p>
+            <p>Aby pobrać dany element ze strony, należy skorzystać z funkcji document.getElementById(), która pobiera element o danym indentyfikatorze. <br>Jeżeli element go nie posiada, to musimy mu go nadać - nazwa identyfikatora jest dowolna.</p>
+            <p>Identyfikator możemy nadać w następujący sposób: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+&ltp id="samochod"&gt&lt/p&gt
+                </code></pre>
+            </div>
+            <p>W ten sposób utworzyliśmy paragraf z identyfikatorem o nazwie "samochod"</p>
+
+            <h1>Zmiana tekstu pobranego elementu.</h1>
+            <p>Na pobranym elemencie możemy teraz operować, na przykład edytując jego tekst. <br>Po funkcji getElementById() stawiamy kropkę i odwołujemy się do atrybutu innerHTML, który odpowiada za tekst elementu.</p>
+            <p>Przykład: Edytuj paragraf o id samochod, tak, żeby tekst brzmiał "Multipla I"</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    document.getElementById('samochod').innerHTML = "Multipla I"
+                </code></pre>
+            </div>
+            <p>Zatem w miejscu naszego paragrafu o identyfikatorze "samochod" powstanie napis: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Multipla I
+                </code></pre>
+            </div>
+
+            <h1>Zmiana stylu pobranego elementu.</h1>
+            <p>Możemy również edytować styl danego elementu - wystarczy, że odwołamy się do .style.nazwaWlasiwosci, gdzie nazwa właściwości to właściwość CSS, którą chcemy edytować. <br>Przypuśćmy, że chcemy zedytować kolor czcionki paragrafu na czerwony.</p>
+            <p>Przykład: Edytuj styl paragrafu o id samochod, tak, żeby tekst miał kolor czerwony.</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    document.getElementById("samochod").style.color = "red";
+                </code></pre>
+            </div>
+            <p>Zatem w miejscu naszego paragrafu o identyfikatorze "samochod" styl zostanie zmodyfikowany na napis o kolorze czerwonym: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    <span id="lancuchZnakow">Multipla I</span>
+                </code></pre>
+            </div> 
+
+            <h1>Zmiana dowolnego atrybutu pobranego elementu</h1>
+            <p>Możemy edytować dowolny atrybut naszego elementu - wystarczy, że zamiast innerHTML czy style wpiszemy nazwę atrybutu, np. src bądź alt.</p>
+            <p>Przykład: Edytuj obrazek samochod, tak, żeby był wyświetlany plik porsche.jpg.</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    document.getElementById("samochod").src = "porsche.jpg"; //Zakładając, że mamy ten obrazek
+                </code></pre>
+            </div> 
+
+            <h1>Pobieranie wartości pola edycyjnego</h1>
+            <p>Najczęstszym motywem na egzaminie będzie pobranie wartości z danego pola edycyjnego i wykonanie na niej pewnych obliczeń, np. według cennika. <br>Aby to zrobi musimy nadać jakiś identyfikator polu edycyjnemu, do którego chcemy się odwoła pobrać go z użyciem document.getElementByld. Musimy wyciągnąć atrybut value. <br>Zapiszemy więc go do zmiennej. Całość będzie wyglądać następująco:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let wartosc = document.getElementById(identyfikator).value;
+                </code></pre>
+            </div> 
+
+            <p>Teraz popracujemy nad pewnym egzaminem EE.09, powstał on na początku samych egzaminów tego typu. Styl i szkielet strony macie poniżej macie poniżej</p>
+            <p>Obrazek możecie znaleźć szukając egzaminu "Stacja paliw"</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &lt!DOCTYPE html&gt
+    &lthtml lang="en"&gt
+                    
+    &lthead&gt
+        &ltmeta charset="UTF-8"&gt
+        &ltlink rel="stylesheet" href="styl3.css"&gt
+        &lttitle&gtStacja paliw&lt/title&gt
+    &lt/head&gt
+                    
+    &ltbody&gt
+    &ltheader id="kontener-baner"&gt
+        &ltheader id="baner-lewy"&gt
+            &lth1&gtStacja Paliw&lt/h1&gt
+        &lt/header&gt
+        &ltheader id="baner-prawy"&gt
+            &lta href=""&gt&ltimg src="home.png"&gt&lt/a&gt
+            &lta href=""&gt&ltimg src="znak.png" alt=""&gt&lt/a&gt
+        &lt/header&gt
+    &lt/header&gt
+    &ltmain&gt
+        &lth3&gtOblicz koszt paliwa&lt/h3&gt
+        Rodzaj paliwa (1-benzyna, 2-olej napędowy)
+        &ltbr&gt
+        &ltinput type="number" id="rodzaj"&gt
+        &ltbr&gt
+        Ile litrów:
+        &ltbr&gt
+        &ltinput type="number" id="ilosc"&gt
+        &ltbutton id="oblicz"&gtOBLICZ&lt/button&gt
+        &ltp id="wynik"&gt&lt/p&gt
+    &lt/main&gt
+    &ltsection id="kontener-sekcja"&gt
+        &ltsection id="sekcja-lewy"&gt
+            &lta href=""&gtPobierz kwerendy&lt/a&gt
+        &lt/section&gt
+        &ltsection id="sekcja-prawy"&gt
+            &ltimg src="samochod.png" alt="samochód"&gt
+        &lt/section&gt
+    &lt/section&gt
+    &ltfooter&gt
+        &ltp&gtStronę opracował: 00000000000&lt/p&gt
+    &lt/footer&gt
+
+    &ltscript&gt
+        //Tutaj będziemy zapisywać nasz skrypt
+    
+    &lt/script&gt
+    &lt/body&gt
+    &lt/html&gt                
+                </code></pre>
+            </div> 
+            
+            
+            
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    body {
+        font-family: Helvetica;
+    }
+                    
+    #kontener-baner {
+        display: flex;
+        flex-direction: row;
+    }
+                    
+    #baner-lewy,
+    #sekcja-lewy {
+        background-color: rgb(130, 69, 85);
+        color: white;
+        width: 30%;
+        height: 200px;
+        text-align: center;
+    }
+                    
+    #baner-prawy,
+    #sekcja-prawy {
+        background-color: rgb(130, 69, 85);
+        color: white;
+        width: 70%;
+        height: 200px;
+        text-align: center;
+    }
+                    
+    main,
+    footer {
+        background-color: rgb(240, 234, 226);
+        padding: 120px;
+    }
+                    
+    a {
+        color: rgb(240, 234, 226);
+    }
+                    
+    #kontener-sekcja {
+        display: flex;
+        flex-direction: row;
+    }
+                </code></pre>
+            </div> 
+            <p>Teraz mamy takie zadania: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Skrypt pobiera wartości z obu pól edycyjnych numerycznych
+    Następnie oblicza koszt paliwa ze względu na rodzaj i liczbę litrów uwzględniając:
+        Gdy rodzaj paliwa jest równy 1 - koszt jednego litra paliwa wynosi 4 zł
+        Gdy rodzaj paliwa jest równy 2 - koszt jednego litra paliwa wynosi 3,5 zł
+        W każdym innym przypadku koszt paliwa wynosi 0 zł
+    Następnie skrypt wyświetla wynik działania pod przyciskiem OBLICZ według wzoru:<br> „koszt paliwa: &ltwartość&gt zł, gdzie &ltwartość&gt oznacza obliczony wcześniej koszt paliwa
+                </code></pre>
+            </div> 
+
+            <p>Zatem zacznijmy, mamy pobrać pola z dwóch pół edycyjnych, czyli z inputów o id ilosc oraz rodzaj.</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+                </code></pre>
+            </div> 
+            <p>Tylko żeby operować na wartościach w naszym skrypcie, to najpierw musimy dodać jeszcze atrybut value do naszych inputów,<br> które będą naszymi początkującymi wartościami do tych elementów, więc:.</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &ltinput type="number" id="rodzaj" value="1"&gt
+    &ltinput type="number" id="ilosc" value="100"&gt
+                </code></pre>
+            </div> 
+            <p>Skoro też będziemy musieli policzyć koszt, to będziemy musieli dodać zmienną, która będzie przechowywać koszty</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+                </code></pre>
+            </div> 
+            <p>Teraz musimy dodać warunki, przypomnijmy, dla paliwa typu 1, czyli input o id rodzaj będzie mieć value 1, to koszt paliwa będzie wynosić 4 zł, zatem:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+
+    if(rodzaj == 1) {
+        koszt = ilosc * 4;
+    }
+                </code></pre>
+            </div> 
+
+            <p>Teraz dla paliwa o rodzaju 2, koszt będzie wynosić 3.5, zatem:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+    
+    if(rodzaj == 1) {
+        koszt = ilosc * 4;
+    }
+    if(rodzaj == 2) {
+        koszt = ilosc * 3.5;
+    }
+                </code></pre>
+            </div> 
+
+            <p>Teraz ostatnia część warunku, jeżeli rodzaj nie będzie nosić ani 1 ani 2, to koszt wyniesie 0, zatem:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+    
+    if(rodzaj == 1) {
+        koszt = ilosc * 4;
+    }
+    if(rodzaj == 2) {
+        koszt = ilosc * 3.5;
+    }
+    if(rodzaj != 1 && rodzaj != 2) {
+        koszt = 0;
+    }
+                </code></pre>
+            </div> 
+            <p>Oczywiście możemy to wykonać za pomocą SWITCHa bądź ELSE IF oraz ELSE, lecz nie będziemy sobie komplikować.<br> Chcemy zaoszczędzić na egzaminie jak najwięcej czasu, więc zostanie nam więcej czasu na trudniejsze rzeczy jak np: kwerendy z baz itp. <br>Oczywiście za coś takiego nam nie odejmą punkty (chyba że będzie napisane jakiego typu warunków użyć, co praktycznie nigdy się nie zdarzyło)</p>
+            <p>Ostatnią częścią będzie wyświetlenie pod przyciskiem OBLICZ wyniku naszego skryptu, zatem: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+    
+    if(rodzaj == 1) {
+        koszt = ilosc * 4;
+    }
+    if(rodzaj == 2) {
+        koszt = ilosc * 3.5;
+    }
+    if(rodzaj != 1 && rodzaj != 2) {
+        koszt = 0;
+    }
+
+    document.getElementById("wynik").innerHTML = "koszt paliwa: " + koszt + " zł"; <br>    //Ten '+' oznacza konkatenację, czyli łączenie łańcuchów znaków itp.
+                </code></pre>
+            </div> 
+            <p>W wyniku tego działania, w paragrafie o identyfikatorze "wynik" pod przyciskiem OBLICZ będzie nam się pojawiać napis o wzorze: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    koszt paliwa: {koszt} zł
+                </code></pre>
+            </div> 
+            <p>W taki sposób poradziliśmy sobie z bardzo prostym skryptem do egzaminu "Stacja Paliw"</p>
+
+
+        </section>
+
+
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>
