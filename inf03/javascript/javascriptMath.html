@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obiekt Math - JavaScript</title>
+    <link rel="stylesheet" href="styleJavascript.css">
+    <link rel="stylesheet" href="styleKod.css">
+    <script src="skrypt.js"></script>
+</head>
+<body>
+
+        <header>
+            <h1>Witam w <i>JavaScript</i>! Tutaj są materiały, które pomogą się przygotować z JavaScript! </h1>
+        </header>
+
+        <section id="tekst">
+            <h1>Obiekt Math w JavaScript</h1>
+            <p>Obiekt Math służy do pomagania nam w różnych działaniach. Na INF.03/EE.09 wyróżniamy głównie 4 takie funkcje jak: </p>
+            <h1>Math.round()</h1>
+            <p>Math.round() zaokrągla jak my, czyli na przykład: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Math.round(4.51)
+                </code></pre>
+            </div>
+
+            <p>to nam zaokrągli do góry, czyli do 5, lecz jeżeli napiszemy: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Math.round(4.49)
+                </code></pre>
+            </div>
+
+            <p>to nam ta funkcja zaokrągli w dół, czyli do 4.</p>
+
+            <p>W skrócie Math.round() zaokrągla od połowy w górę, oraz poniżej połowy w dół do liczby całkowitej przed przecinkiem.</p>
+            <h1>Math.ceil()</h1>
+            <p>Math.ceil() działa w bardzo specyficzny sposób, zawsze zaokrągla nam w górę, nawet jeżeli: </p>
+            <p>to nam zaokrągli do góry, czyli do 5, lecz jeżeli napiszemy: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Math.ceil(4.00001)
+                </code></pre>
+            </div>
+
+            <p>to nam zaokrągli i tak w górę, z tąd ceil od ceiling, czyli sufit.</p>
+            <p>W skrócie Math.ceil zawsze inkrementuje naszą liczbę całkowitą danej liczby, kasując wszystko po przecinku do zera.</p>
+            
+
+            <h1>Math.floor()</h1>
+            <p>Math.floor() działa na jednak na odwrót, czyli jeżeli mamy nawet: </p>
+            
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Math.floor(4.9999)
+                </code></pre>
+            </div>
+
+            <p>to nam i tak zaokrągli w dół.</p>
+            <p>W skrócie po prostu zostawia naszą liczbę całkowitą z danej liczby i usuwa wszystko po przecinku</p>
+            <h1>Math.abs()</h1>
+            <p>Math.abs() po prostu daną liczbę przemienia na wartość absolutną, czyli:</p>
+            
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Math.abs(-9999)
+                </code></pre>
+            </div>
+
+            <p>stanie się liczbą dodatnią, czyli: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    Math.abs(9999)
+                </code></pre>
+            </div>
+
+            <p>W skrócie Math.abs() nam usuwa minus, przez co liczba staje się dodatnia</p>
+        </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+        
+</body>
+</html>
