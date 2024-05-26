@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Pobieranie Elementu</title>
+    <link rel="stylesheet" href="styleJavascript.css">
+    <link rel="stylesheet" href="styleKod.css">
+    <script src="skrypt.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>JavaScript</i>! Tutaj są materiały, które pomogą się przygotować z JavaScript! </h1>
+    </header>
+
+
+
+        <section id="tekst">
+            <h1>Alerty, Prompty i Parsowanie w JavaScript</h1>
+            <p>Alert, to takie okienko które się pokazuje na górze strony. Często jest kojarzony ze scamerskimi stronami. Ogólnie sam w sobie alert jest przestarzały i rzadko się go używa, lecz CKE uważa że tak jak PHP, są bardzo potrzebne programistom (co w rzeczywistości wiemy jak wygląda)</p>
+            <p>Aby skorzystać z funkcji alertu, piszemy w skrypcie: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function wyswietlAlert() {
+            alert("Przykładowy napis");
+    }
+                </code></pre>
+            </div>
+            
+            <p>Oczywiście bez wywołania funkcji w której jest alert, to nic się nie pokaże na stronie. Możemy sobie na przykład wywołać to za pomocą jakiegoś przycisku: </p>
+            <p>Zróbmy zatem dwa przyciski, jeden będzie do naszego alerta, a drugi do prompta, którego zaraz omówimy: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &ltbutton onclick="wyswietlFunkcje()"&gtPokaż alert&lt/button&gt
+    &ltbutton onclick="wyswietlPrompt()"&gtPokaż prompt&lt/button&gt
+                </code></pre>
+            </div>
+
+            <p>Po naciśnięciu przycisku "Pokaż Alert", wyświetli się nam alert z tekstem, który wpisaliśmy w cudzysłów w jego nawiasy.</p>
+
+            <h1>Prompt</h1>
+            <p>Prompt, działa podobnie jak alert, lecz on przyjmuje dane. Wyświetla się w bardzo podobnym okienku i przyjmuje dane tekstowe (nie liczbowe)</p>
+            <p>Napiszmy zatem prompta w naszym skrypcie: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function wyswietlAlert() {
+        alert("Przykładowy napis");
+    }
+
+    function wyswietlPrompt() {
+        let wynik = prompt("Wpisz jakiś napis: ");
+    }
+                </code></pre>
+            </div>
+            <p>Musimy jeszcze utworzyć zmienną, w której będzie przechowywany wynik prompta, dlatego też stworzyliśmy sobie zmienną "wynik".</p>
+            <p>Teraz jeżeli naciśniemy przycisk "Pokaz Prompta", wyświetli się nam okienko, w które możemy wpisać jakieś dane tekstowe.</p>
+
+            <p>Jeżeli jednak chcemy dokonać jakiś obliczeń na naszym wyniku, musimy wynik Parsować.</p>
+            <p>Co to oznacza? W skrócie jest to zmiana jednego typu danych na drugi, w tym przypadku będziemy zmieniać nasz wynik czyli tekst na liczbę, czyli na przykład int, zatem:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function wyswietlAlert() {
+        alert("Przykładowy napis");
+    }
+
+    function wyswietlPrompt() {
+        let wynik = prompt("Wpisz jakiś napis: ");
+        document.getElementById("wynik").innerHTML = parseInt(wynik); 
+        //zakładając, że mamy jakieś pole z identyfikatorem "wynik" na stronie
+    }
+                </code></pre>
+            </div>
+
+            <p>W ten sposób wyświetlamy nasz wynik prompta jako liczba, przez co możemy dokonywać wielu różnych operacji na naszej zmiennej wynik, na przykład: </p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function wyswietlAlert() {
+        alert("Przykładowy napis");
+    }
+
+    function wyswietlPrompt() {
+        let wynik = prompt("Wpisz jakiś napis: ");
+        document.getElementById("wynik").innerHTML = parseInt(wynik) + 1; 
+    }
+                </code></pre>
+            </div>
+            <p>Na przykład powyżej zmodyfikowany kod, po dodaniu 1 za parsowaniem doda nam 1 do liczby wpisanej przez użytkownika</p>
+
+
+        </section>
+
+
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>
