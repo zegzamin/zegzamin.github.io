@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Pobieranie Elementu</title>
+    <link rel="stylesheet" href="styleJavascript.css">
+    <link rel="stylesheet" href="styleKod.css">
+    <script src="skrypt.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>JavaScript</i>! Tutaj są materiały, które pomogą się przygotować z JavaScript! </h1>
+    </header>
+
+
+
+        <section id="tekst">
+            <h1>Funkcje w JavaScript</h1>
+            <p>Funkcje to kod, który możemy używać wielokrotnie, bez pisania wszystkich jego linijek, a jedynie odwołując się do nazwy danej funkcji. <br>Z funkcji korzystaliśmy już w czasie tego kursu wielokrotnie - czy console.log, czy getElementByld - każda z nich jest funkcją.
+<br>Aby wywołać kod po naciśnięciu przycisku, również będziemy musieli utworzyć funkcję, do której go schowamy, by móc go wywołać.</p>
+            
+            <h1>Definiowanie funkcji</h1>
+            <p>Funkcje definiuje się w JavaScript słowem kluczowym function, podając nazwę funkcji i otwierając nawiasy okrągłe ().</p>
+            <p>Przykład: Utwórz funkcję o nazwie zegzamin.</p>
+
+
+<div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function zegzamin() {
+            //kod wykonywany po wywołaniu funkcji
+    }
+                </code></pre>
+            </div>
+            <h1>Wywoływanie funkcji z użyciem przycisku</h1>
+            <p>Aby skorzystać z wywołania funkcji z użyciem przycisku, należy nadać przyciskowi atrybut onclick równy funkcji, np. onclick="zegzamin()" wywoła funkcję ezdamin.<br> Zwróć uwagę, że w zapisie pojawiają się również nawiasy okrągłe - nie wystarczy podać samej nazwy funkcji, trzeba dodać dwa nawiasy.</p>
+
+            <p>Powróćmy do naszego HTML oraz CSS z lekcji poprzedniej, zamieszczam kod poniżej: </p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &lt!DOCTYPE html&gt
+    &lthtml lang="en"&gt
+                    
+    &lthead&gt
+        &ltmeta charset="UTF-8"&gt
+        &ltlink rel="stylesheet" href="styl3.css"&gt
+        &lttitle&gtStacja paliw&lt/title&gt
+    &lt/head&gt
+                    
+    &ltbody&gt
+    &ltheader id="kontener-baner"&gt
+        &ltheader id="baner-lewy"&gt
+            &lth1&gtStacja Paliw&lt/h1&gt
+        &lt/header&gt
+        &ltheader id="baner-prawy"&gt
+            &lta href=""&gt&ltimg src="home.png"&gt&lt/a&gt
+            &lta href=""&gt&ltimg src="znak.png" alt=""&gt&lt/a&gt
+        &lt/header&gt
+    &lt/header&gt
+    &ltmain&gt
+        &lth3&gtOblicz koszt paliwa&lt/h3&gt
+        Rodzaj paliwa (1-benzyna, 2-olej napędowy)
+        &ltbr&gt
+        &ltinput type="number" id="rodzaj"&gt
+        &ltbr&gt
+        Ile litrów:
+        &ltbr&gt
+        &ltinput type="number" id="ilosc"&gt
+        &ltbutton id="oblicz"&gtOBLICZ&lt/button&gt
+        &ltp id="wynik"&gt&lt/p&gt
+    &lt/main&gt
+    &ltsection id="kontener-sekcja"&gt
+        &ltsection id="sekcja-lewy"&gt
+            &lta href=""&gtPobierz kwerendy&lt/a&gt
+        &lt/section&gt
+        &ltsection id="sekcja-prawy"&gt
+            &ltimg src="samochod.png" alt="samochód"&gt
+        &lt/section&gt
+    &lt/section&gt
+    &ltfooter&gt
+        &ltp&gtStronę opracował: 00000000000&lt/p&gt
+    &lt/footer&gt
+
+    &ltscript&gt
+        let rodzaj = document.getElementById("rodzaj").value;
+        let ilosc = document.getElementById("ilosc").value;
+        let koszt = 0;
+        
+        if(rodzaj == 1) {
+            koszt = ilosc * 4;
+        }
+        if(rodzaj == 2) {
+            koszt = ilosc * 3.5;
+        }
+        if(rodzaj != 1 && rodzaj != 2) {
+            koszt = 0;
+        }
+
+        document.getElementById("wynik").innerHTML = "koszt paliwa: " + koszt + " zł";
+        
+    &lt/script&gt
+    &lt/body&gt
+    &lt/html&gt                
+                </code></pre>
+            </div> 
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    body {
+        font-family: Helvetica;
+    }
+                    
+    #kontener-baner {
+        display: flex;
+        flex-direction: row;
+    }
+                    
+    #baner-lewy,
+    #sekcja-lewy {
+        background-color: rgb(130, 69, 85);
+        color: white;
+        width: 30%;
+        height: 200px;
+        text-align: center;
+    }
+                    
+    #baner-prawy,
+    #sekcja-prawy {
+        background-color: rgb(130, 69, 85);
+        color: white;
+        width: 70%;
+        height: 200px;
+        text-align: center;
+    }
+                    
+    main,
+    footer {
+        background-color: rgb(240, 234, 226);
+        padding: 120px;
+    }
+                    
+    a {
+        color: rgb(240, 234, 226);
+    }
+                    
+    #kontener-sekcja {
+        display: flex;
+        flex-direction: row;
+    }
+                </code></pre>
+            </div> 
+
+
+            <p>Teraz, powróćmy do naszego przycisku OBLICZ, i dodajmy mu atrybut onclick, który bedzie wykonywać funkcję oblicz()</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    &ltbutton id="oblicz" onclick="oblicz()"&gtOBLICZ&lt/button&gt
+                </code></pre>
+            </div>
+
+            <p>Teraz jeżeli klikniemy przycisk OBLICZ, to nam by się wykonała funkcje, lecz nam się nie wykona. <br>Dlaczego? Gdyż w skrypcie naszym nie zrobiliśmy żadnej takiej funkcji, dlatego przejdźmy do skryptu:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+                    
+    if(rodzaj == 1) {
+        koszt = ilosc * 4;
+    }
+    if(rodzaj == 2) {
+        koszt = ilosc * 3.5;
+    }
+    if(rodzaj != 1 && rodzaj != 2) {
+        koszt = 0;
+    }
+
+    document.getElementById("wynik").innerHTML = "koszt paliwa: " + koszt + " zł";
+                </code></pre>
+            </div>
+
+
+            <p>Stwórzmy funkcję oblicz():</p>
+
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function oblicz(){
+        //kod
+    }
+
+    let rodzaj = document.getElementById("rodzaj").value;
+    let ilosc = document.getElementById("ilosc").value;
+    let koszt = 0;
+                    
+    if(rodzaj == 1) {
+        koszt = ilosc * 4;
+    }
+    if(rodzaj == 2) {
+        koszt = ilosc * 3.5;
+    }
+    if(rodzaj != 1 && rodzaj != 2) {
+        koszt = 0;
+    }
+
+    document.getElementById("wynik").innerHTML = "koszt paliwa: " + koszt + " zł";
+                </code></pre>
+            </div>
+
+            <p>Teraz w miejsce nawiasów funkcji wklejmy nasz cały skrypt:</p>
+            <div class="kontener-kod">
+                <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+                <pre><code>
+    function oblicz(){
+        let rodzaj = document.getElementById("rodzaj").value;
+        let ilosc = document.getElementById("ilosc").value;
+        let koszt = 0;
+                        
+        if(rodzaj == 1) {
+            koszt = ilosc * 4;
+        }
+        if(rodzaj == 2) {
+            koszt = ilosc * 3.5;
+        }
+        if(rodzaj != 1 && rodzaj != 2) {
+            koszt = 0;
+        }
+
+        document.getElementById("wynik").innerHTML = "koszt paliwa: " + koszt + " zł";
+    }
+                </code></pre>
+            </div>
+
+            <p>Po odświeżeniu strony przycisk z jego funkcją w JavaScript będzie nam zwracać nasze koszty</p>
+
+        </section>
+
+
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>
