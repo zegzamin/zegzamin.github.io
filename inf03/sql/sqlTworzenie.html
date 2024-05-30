@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tworzenie - SQL</title>
+    <link rel="stylesheet" href="styleKod.css">
+    <link rel="stylesheet" href="styleSQL.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Witam w <i>Tworzeniu, czyszczeniu oraz usuwaniu tabel w SQL </i>! Tutaj są materiały, które pomogą się przygotować z SQL! </h1>
+
+    </header>
+
+
+    <section id="tekst">
+
+        <h1>Dodawanie nowych tabel</h1>
+        <p>Do tej pory, dodawanie przez nas nowych tabel odbywało się za pomocą interfejsu na PHPMyAdmin. <br>Na egzaminie jednak (tylko pozornie) musimy stworzyć tabelę zużyciem zapytania CREATE TABLE. <br>Zapamiętanie i pisanie tego natomiast mija się z celem - można wykorzystać sprytny trik, jaki pokażę Ci w czasie lekcji.</p>
+        <br>
+
+        <h1>Czyszczenie tabeli z rekordów</h1>
+        <p>Innym, co prawda rzadko pojawiającym się motywem, natomiast wciąż możliwym na egzaminie będzie zapytanie czyszczące tabelę z rekordów, resetującą ją do stanu zerowego.<br>Aby to zrobić, należy użyć kwerendy TRUNCATE TABLE tabela. Wtedy tabela zostanie wyczyszczona (ale nie usunięta całkowicie).*</p>
+
+        <br>
+        <h1>Usuwanie tabeli</h1>
+        <p>Jeszcze rzadziej pojawiało się natomiast polecenie dotyczące usuwania całej tabeli za pomocą polecenia SQL. Realizujemy to za pomocą polecenia DROP TABLE tabela. <br>W przypadku TRUNCATE i DROP znów możemy skorzystać ze sprytnego triku, który pozwoli nam ominąć konieczność pisania tych poleceń.</p>
+
+        <br>
+        <h1>Jest trick o którym CKE i nauczyciele nie chcą abyś wiedział!</h1>
+        <p>Aby usuwać/czyścić tabele, możemy przejść do naszej tabeli, później do "Operacji" w tabeli, po czym jak zjedziemy na dół będziemy mieć zazwyczaj 3 opcje:</p>
+        <p>- Truncate, </p>
+        <p>- Delete From,</p>
+        <p>- Drop.</p>
+
+        <p>Jeżeli naciśniemy jakiś z nich to dostajemy alert, w którym jest napisane, czy na pewno chcemy usunąć rekord, po czym wypisuje nam to całe zapytanie do danego polecenia. <br>Możemy to sobie skopiować te polecenie i dać go jako skrypt, wykonujemy go i możemy zrobić screena! To samo jest w tabelach. <br>Jeżeli przejdziemy do "New" pod nazwą naszej bazy, wprowadzimy dane itp to niżej jest przycisk "Podgląd SQL" / "Preview SQL", jeżeli to naciśniemy, to wyświetli nam się cała kwerenda do stworzenia tej tabeli.</p>
+
+
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+
+</body>
+</html>
