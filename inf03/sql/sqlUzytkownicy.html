@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Użytkownicy - SQL</title>
+    <link rel="stylesheet" href="styleKod.css">
+    <link rel="stylesheet" href="styleSQL.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Witam w <i>Tworzeniu Użytkowników</i>! Tutaj są materiały, które pomogą się przygotować z SQL! </h1>
+
+    </header>
+
+
+    <section id="tekst">
+
+        <h1>Tworzenie użytkowników</h1>
+        <p>Przez cały czas korzystaliśmy z użytkownika root bez hasła. <br>Czasem w arkuszach wymagane jest natomiast stworzenie nowego użytkownika. Realizuje się to za pomocą polecenia CREATE USER</p>
+ 
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    'nazwa_uzytkownika'@'localhost' IDENTIFIED BY 'haslo'
+            </code></pre>
+        </div>
+        <p>Jak w poprzednich lekcjach, można użyć sprytnego triku (TM) (z małą modyfikacją)</p>
+
+        <p>Klikamy banner phpMyAdmin > Konta Użytkowników > Dodaj konta użytkownika</p>
+        <p>Dodajemy użytkownikowi nazwę, itp. Zatwierdzamy i na górze nam się wyświetla nasza kwerenda:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    CREATE USER 'admin'@'localhost' IDENTIFIED VIA mysql_native_password USING '***';GRANT USAGE ON *.* TO 'admin'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+            </code></pre>
+        </div>
+        <p>My się skupimy na części  do słowa GRANT, czyli: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    CREATE USER 'admin'@'localhost' IDENTIFIED VIA mysql_native_password USING '***';
+            </code></pre>
+        </div>
+        <p>Naszą modyfikacją będzie usunięcie wszystko po VIA: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    CREATE USER 'admin'@'localhost' IDENTIFIED;
+            </code></pre>
+        </div>
+        <p>... oraz dopisanie BY 'haslo'</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    CREATE USER 'admin'@'localhost' IDENTIFIED BY 'haslo';
+            </code></pre>
+        </div>
+        <p>W taki sposób mamy kwerendę do naszego użytkownika!</p>
+        <br>
+        <h1>Nadawanie praw użytkownikowi:</h1>
+        <p>Teraz skoro mamy użytkownika, to przechodzimy do naszego użytkownika oraz w edycję uprawnień.</p>
+        <p>Wybierz sobie uprawnienia, które ciebie interesują oraz wykonaj polecenie.</p>
+        <p>Teraz na górze ekranu się pojawi taki komunikat:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    REVOKE ALL PRIVILEGES ON *.* FROM 'admin'@'localhost'; REVOKE GRANT OPTION ON *.* FROM 'admin'@'localhost'; GRANT SELECT, INSERT, DELETE ON *.* TO 'admin'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+            </code></pre>
+        </div>
+        <p>Nas interesuje wszystko od GRANT do REQUIRE, czyli:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    GRANT SELECT, INSERT, DELETE ON *.* TO 'admin'@'localhost';
+            </code></pre>
+        </div>
+        <p>W ten sposób mamy dwie nasze kwerendy: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    CREATE USER 'admin'@'localhost' IDENTIFIED BY 'haslo' //na tworzenie użytkownika
+
+    GRANT SELECT, INSERT, DELETE ON *.* TO 'admin'@'localhost'; //na dodawanie praw użytkownikowi
+            </code></pre>
+        </div>
+        <p>Możemy też zobaczyć na początku tej dużej kwerendy jak my dodawaliśmy prawa użytkownikowi napis: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    REVOKE ALL PRIVILEGES ON *.* FROM 'admin'@'localhost';
+            </code></pre>
+        </div>
+        <p>To jest kolejna kwerenda do usuwania praw! <br> Zatem mamy 3 kwerendy: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    CREATE USER 'admin'@'localhost' IDENTIFIED BY 'haslo' //na tworzenie użytkownika
+
+    GRANT SELECT, INSERT, DELETE ON *.* TO 'admin'@'localhost'; //na dodawanie praw użytkownikowi
+
+    REVOKE ALL PRIVILEGES ON *.* FROM 'admin'@'localhost'; //na odbieranie praw użytkownikowi
+            </code></pre>
+        </div>
+
+        <h1><i>Dzięki, i powodzenia na egzaminie!</i></h1>
+
+
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+
+</body>
+</html>
