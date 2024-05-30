@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie - SQL</title>
+    <link rel="stylesheet" href="styleKod.css">
+    <link rel="stylesheet" href="styleSQL.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Witam w <i>Sortowaniu wyników</i>! Tutaj są materiały, które pomogą się przygotować z SQL! </h1>
+
+    </header>
+
+
+    <section id="tekst">
+
+        <h1>Sortowanie wyników</h1>
+        <p>W arkuszach bardzo często pojawia się konieczność posortowania wyników, które otrzymamy z zapytania SELECT. <br>Służyć będzie do tego funkcja ORDER BY. Tą funkcję będziemy stawiać na samym końcu zapytania. <br>Możemy sortować rosnąco (od najmniejszego w górę) - dopisując słówko ASC lub malejąco (od największego w dół) dopisując słówko DESC.</p>
+ 
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT * FROM nazwa_tabeli ORDER BY nazwa_kolumny ASC;
+    // Powyżej jest zastosowanie składniowo, sortowania rosnąco
+
+    SELECT * FROM nazwa_tabeli ORDER BY nazwa_kolumny DESC;
+    // Powyżej jest zastosowanie składniowo, sortowania malejąco
+            </code></pre>
+        </div>
+
+        <p>Zróbmy parę zadań na bazie z poprzedniej lekcji: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    Nasze zadania:
+        - Wyświetl czas, numer rejsu, kierunek, status z tabeli przyloty rosnąco
+        - Wyświetl czas, numer rejsu, kierunek, status z tabeli przyloty malejąco
+
+            </code></pre>
+        </div>
+        <br>
+        <h1>Pierwsze zadanie:</h1>
+        <p>Zatem skoro będziemy wyświetlać to bierzemy SELECT: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT nazwa_kolumny FROM nazwa_tabeli ORDER BY rodzaj_sortowania;
+            </code></pre>
+        </div>
+        <p>Teraz wprowadźmy nasze kolumny, czas, nr_rejsu, kierunek, status_lotu:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, nr_rejsu, kierunek, status_lotu FROM nazwa_tabeli ORDER BY rodzaj_sortowania;
+            </code></pre>
+        </div>
+        <p>Wprowadźmy nazwę tabeli, czyli przyloty: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, nr_rejsu, kierunek, status_lotu FROM przyloty ORDER BY rodzaj_sortowania;
+            </code></pre>
+        </div>
+        <p>Teraz musimy dodać rodzaj sortowania, rosnąco, czyli ASC:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, nr_rejsu, kierunek, status_lotu FROM przyloty ORDER BY czas ASC;
+            </code></pre>
+        </div>
+        <p>Super! Przejdźmy do drugiego zadania!</p>
+        <br>
+        <h1>Drugie zadanie:</h1>
+        <p>Mamy to samo polecenie co w pierwszym zadaniu, lecz zmieniamy rodzaj sortowania na malejący, czyli:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, nr_rejsu, kierunek, status_lotu FROM przyloty ORDER BY czas ASC;
+            </code></pre>
+        </div>
+        <p>I teraz wystarczy zamienić ASC(rosnąco) na DESC(malejąco)</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, nr_rejsu, kierunek, status_lotu FROM przyloty ORDER BY czas DESC;
+            </code></pre>
+        </div>
+        <h1><i>Zadania wykonane!</i></h1>
+
+
+
+
+
+    </section>
+
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+
+</body>
+</html>
