@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wprowadzenie - SQL</title>
+    <link rel="stylesheet" href="styleKod.css">
+    <link rel="stylesheet" href="styleSQL.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Witam w <i>Wprowadzeniu do SQL</i>! Tutaj są materiały, które pomogą się przygotować z SQL! </h1>
+
+    </header>
+
+
+    <section id="tekst">
+
+        <h1>SQL (ang. Structured Query Language) jest językiem zapytań, przy pomocy którego komunikujemy się z bazą danych <br>(wydajemy polecenia, które pozwalają zarządzać znajdującymi się tam danymi). </h1>
+        <br>
+        <h1>Kwerendy SQL</h1>
+        <p>Kwerendy w języku SQL nazywane są również zapytaniami - służą one do uzyskiwan określonych rekordów z tabeli, dodawania nowych, aktualizacji istniejących bądź usuwania określonego rekordu. Zapytania to podstawowa forma komunikacji z bazą danych. Będziemy odpytywać naszą bazę, by zwróciła nam rekordy, które spełniają określony warunek lub dodata nowy rekord do bazy danych.</p>
+        <br>
+
+        <h1>Kwerenda SELECT</h1>
+        <p>Kwerenda SELECT to zapytanie wybierające rekordy z tabeli. Za jej pomocą możemy wyciągnąć z tabeli określone przez nas dane. <br>Kwerenda SELECT wybiera rekordy o określonych kolumnach z określonej tabeli. Jej składnia wygląda tak:</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT nazwa_kolumny FROM nazwa_tabeli;
+            </code></pre>
+        </div>
+
+        <br>
+
+        <h1>Kwerenda SELECT - warunki</h1>
+        <p>Możemy wybierać rekordy wyłącznie spełniające jakiś warunek - na przykład gdzie wartość kolumny pensja jest większa od 3500. <br>Do ustawienia warunku w zapytaniu SELECT, użyjemy słówka kluczowego WHERE. <br>Przykładowo: wyciągnijmy wszystkie rekordy, które mają wartość pensji większą niż 3500.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT * FROM tabela WHERE pensja > 3500;
+            </code></pre>
+        </div>
+
+        <br>
+
+        <h1>Kwerenda SELECT - warunki</h1>
+        <p>Możemy również łączyć warunki - kolejne warunki będziemy oddzielać słowem AND. Wtedy, by rekord został wybrany, muszą zostać spełnione wszystkie warunki. <br>Możemy skorzystać także z alternatywy - warunki oddzielamy słowem OR. Wtedy rekordy zostaną wybrane, gdy przynajmniej jeden warunek będzie spełniony.</p>
+        <br>
+        <h1>Wybieranie rekordów, gdzie podana jest część tekstu</h1>
+        <p>Aby otrzymać rekord, którego wartość kolumny rozpoczyna się bądź kończy na danej literze lub która zawiera określone stowo, musimy skorzystać z operatora LIKE w warunku WHERE.
+            <br> - WHERE kolumna LIKE '%a' - zwróci rekordy, których wartość kolumny zaczyna się od a
+            <br> - WHERE kolumna LIKE 'a%' - zwróci rekordy, których wartość kolumny kończy się na a
+            <br> - WHERE kolumna LIKE '%war%' - zwróci rekordy, których wartość kolumny posiada słowo "war".
+        </p>
+        <br>
+        <h1>Sumowanie wartości z kolumn - Funkcja SUM</h1>
+        <p>Aby zapytanie SELECT zwróciło sumę wartości z danej kolumny (na przykład sumę wszystkich ilości towarów w zleceniach), należy po słowie SELECT wstawić funkcję SUM(kolumna). <br>Przykładowo: zesumujmy wszystkie wartości pensja dla tabeli pracownicy.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT SUM(pensja) FROM pracownicy;
+            </code></pre>
+        </div>
+        <br>
+        <h1>Maksymalna/minimalna wartość kolumny - Funkcja MAX/MIN</h1>
+        <p>Aby zapytanie SELECT zwróciło maksymalną lub minimalną wartość z danej kolumny należy po słowie SELECT wstawić funkcję MAX(kolumna) lub MIN(kolumna). <br>Przykładowo: wybierz staż pracy pracownika, który jest najdłuższy z całej tabeli pracownicy.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT MAX(staz_pracy) FROM pracownicy;
+    // dla maksymalnej (patrz wyżej), oraz minimalnej (patrz niżej)
+    SELECT MIN(staz_pracy) FROM pracownicy;
+            </code></pre>
+        </div>
+        <br>
+        <h1>Średnia z wartości kolumny - Funkcja AVG</h1>
+        <p>Ostatnią z funkcji dotyczącą zapytania SELECT jest AVG, które zwracać będzie średnią wartość z danej kolumny. <br>Zapis jest identyczny jak we wcześniejszych dwóch przypadkach - stawiamy funkcję AVG(kolumna) po słowie SELECT.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT AVG(kolumna) FROM tabela;
+            </code></pre>
+        </div>
+        <br>
+        <h1>Ograniczenie ilości wyników</h1>
+        <p>Czasem będziemy chcieli uzyskać tylko 5 rekordów, które spełniają nasze wymagania. <br>Do tego będzie służyć nam funkcja LIMIT, którą będziemy umieszczać na samym końcu zapytania SELECT. <br>Po słowie LIMIT podajemy liczbę rekordów, którą chcemy otrzymać w wyniku.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT * FROM pracownicy WHERE pensja > 3500 LIMIT 5 
+    // zwróci wyłącznie 5 pracowników spełniających warunek.
+            </code></pre>
+        </div>
+        <br>
+        <h1>Kwerenda INSERT</h1>
+        <p>Zapytanie INSERT INTO będzie wstawiało nowy rekord do tabeli. Jego składnia będzie wyglądać tak:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO tabela VALUES (wartość dla kolumny 1, wartość dla kolumny 2...);
+            </code></pre>
+        </div>
+        <p>To zapytanie można przetłumaczyć na język polski jako włóż do tabeli o nazwie tabela dane wartości.</p>
+
+        <br>
+
+        <h1>Kwerenda UPDATE</h1>
+        <p>Kwerenda UPDATE działać będzie wyłącznie na rekordy, które już istnieją. Będzie ona aktualizować określony rekord lub rekordy i nadawać im nowe wartości.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE tabela SET kolumna=wartość WHERE kolumna2=wartość2;
+            </code></pre>
+        </div>
+        <p>Zwróć uwagę na warunek WHERE w zapytaniu. Będzie on działać identycznie jak w przypadku zapytania SELECT.</p>
+
+        <br>
+
+        <h1>Kwerenda DELETE</h1>
+        <p>Kwerenda DELETE będzie usuwać dane rekordy, które spełniają określony warunek. Składnia:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    DELETE FROM tabela WHERE kolumna=wartość;
+            </code></pre>
+        </div>
+        <p>!!! Warunek WHERE jest obowiązkowy - bez niego usunięte zostaną wszystkie rekordy z tabeli !!!</p>
+        <br>
+        <h1>Czas na praktyke</h1>
+        <p>Poniżej podaję zawartość pewnego pliku sql, skopiuj kod do jakiegoś edytora i podaj nazwę, kończąc ją napisanem: ".sql". Sprawi to że będziemy mieć nasz plik .sql do wykonywania zadań</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    -- phpMyAdmin SQL Dump
+    -- version 4.8.3
+    -- https://www.phpmyadmin.net/
+    --
+    -- Host: 127.0.0.1
+    -- Czas generowania: 21 Sty 2019, 09:34
+    -- Wersja serwera: 10.1.36-MariaDB
+    -- Wersja PHP: 7.2.11
+    
+    SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+    SET AUTOCOMMIT = 0;
+    START TRANSACTION;
+    SET time_zone = "+00:00";
+    
+    
+    /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+    /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+    /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+    /*!40101 SET NAMES utf8mb4 */;
+    
+    --
+    -- Baza danych: `egzamin`
+    --
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `odloty`
+    --
+    
+    CREATE TABLE `odloty` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `samoloty_id` int(10) UNSIGNED NOT NULL,
+        `nr_rejsu` varchar(8) DEFAULT NULL,
+        `kierunek` varchar(10) DEFAULT NULL,
+        `czas` time NOT NULL,
+        `dzien` date DEFAULT NULL,
+        `status_lotu` text
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    --
+    -- Zrzut danych tabeli `odloty`
+    --
+    
+    INSERT INTO `odloty` (`id`, `samoloty_id`, `nr_rejsu`, `kierunek`, `czas`, `dzien`, `status_lotu`) VALUES
+    (1, 1, 'FR1646', 'Neapol', '09:20:00', '2019-07-25', 'wystartowal'),
+    (2, 1, 'FR1327', 'ALICANTE', '09:10:00', '2019-07-25', 'Opozniony 10 min'),
+    (3, 2, 'W63425', 'Warszawa', '09:45:00', '2019-07-25', 'odprawa'),
+    (4, 3, 'LX5647', 'Londyn LT', '10:03:00', '2019-07-25', 'odprawa'),
+    (5, 3, 'LX5673', 'Malta', '10:06:00', '2019-07-25', ''),
+    (6, 3, 'LX5622', 'Wieden', '10:13:00', '2019-07-25', ''),
+    (7, 4, 'LH9821', 'Berlin', '10:16:00', '2019-07-25', ''),
+    (8, 4, 'LH9888', 'Hamburg', '10:19:00', '2019-07-25', ''),
+    (9, 4, 'LH9331', 'Monachium', '10:22:00', '2019-07-25', ''),
+    (10, 2, 'W68769', 'Zurych', '09:56:00', '2019-07-25', 'boarding');
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `pozycja`
+    --
+    
+    CREATE TABLE `pozycja` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `nazwa` text
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    --
+    -- Zrzut danych tabeli `pozycja`
+    --
+    
+    INSERT INTO `pozycja` (`id`, `nazwa`) VALUES
+    (1, 'bramkarz'),
+    (2, 'obronca'),
+    (3, 'pomocnik'),
+    (4, 'napastnik');
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `przyloty`
+    --
+    
+    CREATE TABLE `przyloty` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `samoloty_id` int(10) UNSIGNED NOT NULL,
+        `nr_rejsu` varchar(8) DEFAULT NULL,
+        `kierunek` varchar(10) DEFAULT NULL,
+        `czas` time DEFAULT NULL,
+        `dzien` date DEFAULT NULL,
+        `status_lotu` text
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    --
+    -- Zrzut danych tabeli `przyloty`
+    --
+    
+    INSERT INTO `przyloty` (`id`, `samoloty_id`, `nr_rejsu`, `kierunek`, `czas`, `dzien`, `status_lotu`) VALUES
+    (1, 2, 'W63454', 'Warszawa', '09:45:00', '2019-07-29', 'wyladowal'),
+    (2, 3, 'LX3447', 'Londyn LT', '10:03:00', '2019-07-29', 'opoznienie 10 min'),
+    (3, 3, 'LX5473', 'Malta', '10:06:00', '2019-07-29', 'planowy'),
+    (4, 3, 'LX5728', 'Wieden', '10:13:00', '2019-07-29', ''),
+    (5, 4, 'LH9829', 'Berlin', '10:16:00', '2019-07-29', ''),
+    (6, 4, 'LH9898', 'Hamburg', '10:19:00', '2019-07-29', ''),
+    (7, 4, 'LH3331', 'Monachium', '10:22:00', '2019-07-29', ''),
+    (8, 2, 'W68546', 'Zurych', '10:33:00', '2019-07-29', '');
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `samoloty`
+    --
+    
+    CREATE TABLE `samoloty` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `typ` varchar(20) DEFAULT NULL,
+        `linie` varchar(10) DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    --
+    -- Zrzut danych tabeli `samoloty`
+    --
+    
+    INSERT INTO `samoloty` (`id`, `typ`, `linie`) VALUES
+    (1, 'Boening 787', 'RYANAIR'),
+    (2, 'Boening 737', 'WIZZAIR'),
+    (3, 'Boening 787', 'SWISS'),
+    (4, 'Boening 737', 'LUFTHANSA');
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `typy`
+    --
+    
+    CREATE TABLE `typy` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `kategoria` text
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    --
+    -- Zrzut danych tabeli `typy`
+    --
+    
+    INSERT INTO `typy` (`id`, `kategoria`) VALUES
+    (1, 'Procesor'),
+    (2, 'RAM'),
+    (5, 'karta graficzna'),
+    (6, 'HDD');
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `uslugi`
+    --
+    
+    CREATE TABLE `uslugi` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `kadra_id` int(10) UNSIGNED NOT NULL,
+        `rodzaj` int(10) UNSIGNED DEFAULT NULL,
+        `nazwa` text,
+        `cena` double DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    
+    --
+    -- Zrzut danych tabeli `uslugi`
+    --
+    
+    INSERT INTO `uslugi` (`id`, `kadra_id`, `rodzaj`, `nazwa`, `cena`) VALUES
+    (1, 2, 1, 'Piling enzymatyczny', 45),
+    (2, 5, 3, 'Masaz twarzy', 20),
+    (3, 2, 1, 'Maska', 30),
+    (4, 2, 1, 'Regulacja brwi', 5),
+    (5, 4, 2, 'Farbowanie', 50),
+    (6, 4, 2, 'Strzyzenie', 40),
+    (7, 1, 3, 'Ustalenie diety', 70),
+    (8, 2, 1, 'Henna', 10),
+    (9, 2, 1, 'Paznokcie', 90),
+    (10, 4, 2, 'Czesanie', 30);
+    
+    -- --------------------------------------------------------
+    
+    --
+    -- Struktura tabeli dla tabeli `zdjecia`
+    --
+    
+    CREATE TABLE `zdjecia` (
+        `id` int(10) UNSIGNED NOT NULL,
+        `nazwaPliku` text,
+        `podpis` text
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+                
+    --
+    -- Zrzut danych tabeli `zdjecia`
+    --
+    
+    INSERT INTO `zdjecia` (`id`, `nazwaPliku`, `podpis`) VALUES
+    (1, '1.jpg', 'Londyn'),
+    (2, '2.jpg', 'Wenecja'),
+    (3, '3.jpg', 'Berlin'),
+    (4, '4.jpg', 'Warszawa'),
+    (5, '5.jpg', 'Budapeszt'),
+    (6, '6.jpg', 'Paryz'),
+    (7, '7.jpg', 'Nowy Jork'),
+    (8, '8.jpg', 'Barcelona'),
+    (9, '9.jpg', 'Moskwa');
+    
+    --
+    -- Indeksy dla zrzutów tabel
+    --
+    
+    --
+    -- Indeksy dla tabeli `odloty`
+    --
+    ALTER TABLE `odloty`
+        ADD PRIMARY KEY (`id`);
+    
+    --
+    -- Indeksy dla tabeli `pozycja`
+    --
+    ALTER TABLE `pozycja`
+        ADD PRIMARY KEY (`id`);
+    
+    --
+    -- Indeksy dla tabeli `przyloty`
+    --
+    ALTER TABLE `przyloty`
+        ADD PRIMARY KEY (`id`);
+                
+    --
+    -- Indeksy dla tabeli `samoloty`
+    --
+    ALTER TABLE `samoloty`
+        ADD PRIMARY KEY (`id`);
+    
+    --
+    -- Indeksy dla tabeli `uslugi`
+    --
+    ALTER TABLE `uslugi`
+        ADD PRIMARY KEY (`id`),
+        ADD KEY `uslugi_FKIndex1` (`kadra_id`);
+                
+    --
+    -- Indeksy dla tabeli `zdjecia`
+    --
+    ALTER TABLE `zdjecia`
+        ADD PRIMARY KEY (`id`);
+    
+    --
+    -- AUTO_INCREMENT for dumped tables
+    --
+    
+    --
+    -- AUTO_INCREMENT dla tabeli `odloty`
+    --
+    ALTER TABLE `odloty`
+        MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+    
+    --
+    -- AUTO_INCREMENT dla tabeli `pozycja`
+    --
+    ALTER TABLE `pozycja`
+        MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    
+    --
+    -- AUTO_INCREMENT dla tabeli `przyloty`
+    --
+    ALTER TABLE `przyloty`
+        MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+    
+    --
+    -- AUTO_INCREMENT dla tabeli `samoloty`
+    --
+    ALTER TABLE `samoloty`
+        MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+        
+    --
+    -- AUTO_INCREMENT dla tabeli `uslugi`
+    --
+    ALTER TABLE `uslugi`
+        MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+                
+    --
+    -- AUTO_INCREMENT dla tabeli `zdjecia`
+    --
+    ALTER TABLE `zdjecia`
+        MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+    COMMIT;
+                
+    /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+    /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+    /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+            </code></pre>
+        </div>
+
+        <p>Wykonajmy parę zadań egzaminacyjnych. Zatem w phpMyAdmin przejdźmy do zakładki SQL. Tutaj będziemy wprowadzać nasze kwerendy.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    Nasze zadania:
+
+        - Wyświetl czas, kierunek, numer rejsu oraz status lotu z tabeli przyloty,
+
+        - Przelicz ilość lotów, które się odbywają pomiędzy 10:00:00 a 10:59:00,
+
+        - Zaktualizuj status lotu na "opoznienie 20 min" dla numeru rejsu "LX5673",
+
+        - Wprowadź do odlotów kolejny odlot, zawierający: id samolotu: 5, numer rejsu na: R33310, kierunek: Warszawa, czas 10:10:10, data: 2021-01-21 oraz status na "opozniony 30 min"
+        
+        - Usuń odlot z tabeli odloty, dla id 12.
+        </code></pre>
+        </div>
+
+
+
+        <br>
+        <h1>Pierwsze zadanie: </h1>
+        <p>Mamy wyświetlić czas, kierunek, numer rejsu oraz status lotu z tabeli przyloty, zatem tak: </p>
+        <p>Bierzemy nasz SELECT, wiadomo, bo chcemy wyświetlić. </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT kolumny FROM nazwa_tabeli;
+        </code></pre>
+        </div>
+        <p>Teraz podajemy kolumny, z których mamy wyświetlić nasze dane, czyli: czas, kierunek, numer rejsu oraz status lotu:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, kierunek, nr_rejsu, status_lotu FROM nazwa_tabeli;
+        </code></pre>
+        </div>
+        <p>Z tego zadania nam zostało jeszcze dodać nazwę tabeli z której chcemy wyświetlić te kolumny, zatem:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT czas, kierunek, nr_rejsu, status_lotu FROM przyloty;
+            </code></pre>
+        </div>
+        <p>Klikamy Wykonaj i brawo! Pierwsze zadanie za nami, przejdźmy do reszty. Oczywiście, na egzaminie nie zapominamy o robieniu screenów naszych zadań!</p>
+
+
+
+
+
+
+
+        <br>
+
+        <h1>Drugie zadanie:</h1>
+        <p>Mamy przeliczyć ilość lotów, które się odbywają pomiędzy 10:00:00 a 10:59:00.</p>
+        <p>Najpierw weźmy nasze wyświetlanie, czyli SELECT</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT nazwa_kolumny FROM nazwa_tabeli;
+            </code></pre>
+        </div>
+        <p>Teraz skoro chcemy przeliczyć to wykorzystujemy naszą funkcję COUNT do przeliczenia lotów: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT COUNT(id) FROM nazwa_tabeli;
+            </code></pre>
+        </div>
+        <p>Teraz napiszmy z jakiej tabeli to pobieramy te dane: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT COUNT(id) FROM przyloty;
+            </code></pre>
+        </div>
+        <p>W tym momencie nam zliczy wszystkie przyloty, lecz my tego nie chcemy. <br>Mamy w poleceniu zadania sprecyzowane które przyloty mają być przeliczone, czyli te od 10:00:00 do 10:59:00, zatem zastosujemy WHERE</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT COUNT(id) FROM przyloty WHERE czas >= "10:00:00"
+            </code></pre>
+        </div>
+        <p>Jak można zauważyć, wykorzystaliśmy tutaj WHERE, który nam sprecyzował wynik do tylko przylotów od godziny 10:00:00 w górę przez znaki ">=", czyli większy/lub równy. <br> Oznacza to, że teraz to się zliczy wszystko od godziny 10 w górę, lecz jeszcze nie mamy granicy górnej, czyli do godziny 10:59:00. Do tego użyjemy AND</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    SELECT COUNT(id) FROM przyloty WHERE czas >= "10:00:00" AND czas <= "10:59:00";
+            </code></pre>
+        </div>
+        <p>Kolejne zadanie ukończone!</p>
+        <br>
+
+
+
+
+
+
+
+
+        <h1>Trzecie zadanie:</h1>
+        <p>Musimy teraz zaktualizować status lotu na "opoznienie 20 min" dla numeru rejsu "LX5673"</p>
+        <p>W tym zadaniu skorzystamy z UPDATE(aby zaktualizować) oraz WHERE(aby sprecyzować dla jakiego rejsu)</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE nazwa_tabeli SET nazwa_kolumny = wartość WHERE nazwa_kolumn1 = sprecyzowana_wartość
+            </code></pre>
+        </div>
+        <p>Zatem najpierw podajmy nazwę naszej tabeli: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE odloty SET nazwa_kolumny = wartość WHERE nazwa_kolumn1 = sprecyzowana_wartość;
+            </code></pre>
+        </div>
+        <p>Podajmy teraz nazwę kolumny, w której będzie zmieniana wartość, czyli dla status_lotu, gdyż zmieniamy status: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE odloty SET `status_lotu` = wartość WHERE nazwa_kolumn1 = sprecyzowana_wartość;
+            </code></pre>
+        </div>
+        <p>Teraz podajemy jaka wartość ma się wyświetlić w kolumnie status_lotu, czyli tekst "opoznienie 20 min": </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE odloty SET `status_lotu` = "opoznienie 20 min" WHERE nazwa_kolumn1 = sprecyzowana_wartość;
+            </code></pre>
+        </div>
+        <p>Teraz sprecyzujmy, gdzie będzie się wyświetlać nasz tekst: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE odloty SET `status_lotu` = "opoznienie 20 min" WHERE nr_rejsu = sprecyzowana_wartość;
+            </code></pre>
+        </div>
+        <p>Teraz wprowadźmy zawartość naszej wartości:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    UPDATE odloty SET `status_lotu` = "opoznienie 20 min" WHERE nr_rejsu="LX5673";
+            </code></pre>
+        </div>
+        <p>Zostały dwa ostatnie zadania!</p>
+
+        <br>
+
+        <h1>Czwarte zadanie:</h1>
+        <p>Musimy wprowadzić do odlotów kolejny odlot, zawierający: id samolotu: 5, numer rejsu na: R33310, kierunek: Warszawa, czas 10:10:10, data: 2021-01-21 oraz status na "opozniony 30 min", zatem:</p>
+        <p>Skoro musimy wprowadzić to będziemy korzystać z INSERT INTO</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO nazwa_tabeli VALUES(nazwy_kolumn);
+            </code></pre>
+        </div>
+        <p>Awięc po kolei, mamy mieć ogólnie nowy odlot, to piszemy jako nazwę tabeli odlot jako pierwszą kolumnę NULL, gdyż nasza kolumna id jest auto inkrementowana, czyli sama będzie inkrementować się, wraz z wierszem w którym występuje.</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty VALUES(NULL, );
+            </code></pre>
+        </div>
+        <p>Teraz id samolotu wynosi 5, zatem: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty VALUES(NULL, 5, );
+            </code></pre>
+        </div>
+        <p>Teraz podajemy numer rejsu, czyli: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty VALUES(NULL, 5, 'R33310', );
+            </code></pre>
+        </div>
+        <p>Dalej musimy podać kierunek, czyli Warszawa: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty VALUES(NULL, 5, 'R33310', 'Warszawa', );
+            </code></pre>
+        </div>
+        <p>Teraz podajemy czas, czyli 10:10:10</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty VALUES(NULL, 5, 'R33310', 'Warszawa', '10:10:10', );
+            </code></pre>
+        </div>
+        <p>Musimy również podać dzień, czyli naszą datę: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty VALUES(NULL, 5, 'R33310', 'Warszawa', '10:10:10', '2021-01-21', );
+            </code></pre>
+        </div>
+        <p>Ostatnia rzecz w tym zadaniu to dodać status naszego odlotu</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    INSERT INTO odloty values(NULL, 5, 'R33310', 'Warszawa', '10:10:10', '2021-01-21', 'opoziony 30 min');
+            </code></pre>
+        </div>
+        <p>Znakomicie! Zostało ostatnie zadanie!</p>
+        <br>
+        <h1>Piąte zadanie:</h1>
+        <p>Mamy za zadanie usunąć odlot z tabeli odloty, dla id 12.</p>
+        <p>SKorzystamy w tym zadaniu zatem z DELETE, które umożliwia nam usuwanie danych z tabel: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    DELETE FROM nazwa_tabeli WHERE kolumna=wartość;
+            </code></pre>
+        </div>
+        <p>Skoro chcemy usunąć z odlotów, to wprowadźmy nazwę tabeli: </p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    DELETE FROM odloty WHERE kolumna=wartość;
+            </code></pre>
+        </div>
+        <p>Teraz musimy sprecyzować nasze usuwanie do jednego rekordu o id 12:</p>
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+    DELETE FROM nazwa_tabeli WHERE id=12;
+            </code></pre>
+        </div>
+        <h1><i>Wykonaliśmy wszystkie zadania!</i></h1>
+
+
+
+
+
+
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>
