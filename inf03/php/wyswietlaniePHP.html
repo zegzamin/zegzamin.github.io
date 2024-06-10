@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyświetlanie kwerend - PHP</title>
+    <link rel="stylesheet" href="stylePHP.css">
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>PHP</i>! Tutaj są materiały, które pomogą się przygotować z PHP!</h1>
+    </header>
+
+    <section id="tekst">
+        <h1>Wypisywanie rekordów na ekran</h1>
+        <p>Jeżeli połączenie było poprawne, a kwerenda zwróciła jakieś rekordy, musimy wypisać je na ekran. Będzie to odbywało się zawsze w postaci pętli while z funkcją mysqli_fetch_row.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&lt?php
+$polaczenie = mysqli_connect('localhost', 'root', '', 'egzamin');
+$wynik = mysqli_query($polaczenie, "SELECT czas, kierunek, nr_rejsu, status_lotu FROM przyloty ORDER BY czas ASC");
+
+while ($row = mysqli_fetch_row($wynik)) {
+    echo $row[0] . ' ' . $row[1] . ' ' . $row[2] . ' ' . $row[3] . '&ltbr>';
+}
+
+mysqli_close($polaczenie);
+?>
+            </code></pre>
+        </div>
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>

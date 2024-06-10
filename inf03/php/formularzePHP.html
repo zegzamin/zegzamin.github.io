@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obsługa Formularzy - PHP</title>
+    <link rel="stylesheet" href="stylePHP.css">
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>PHP</i>! Tutaj są materiały, które pomogą się przygotować z PHP!</h1>
+    </header>
+
+    <section id="tekst">
+        <h1>Obsługa Formularzy</h1>
+        <p>Obie kwerendy INSERT i UPDATE będą wiązać się z otrzymaniem jakichś danych z formularza, który wypełnia użytkownik. Aby uzyskać te dane, musimy skorzystać ze zmiennych $_GET i $_POST, zależnie od metody formularza.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&ltform method="post" action="przyklad.php"&gt
+    Imię: &ltinput type="text" name="imie"&gt&ltbr&gt
+    Nazwisko: &ltinput type="text" name="nazwisko"&gt&ltbr&gt
+    &ltinput type="submit"&gt
+&lt/form&gt
+            </code></pre>
+        </div>
+
+        <h1>Obsługa danych z formularza</h1>
+        <p>Aby obsłużyć dane z formularza, musimy je przypisać do zmiennych. Oto przykład:</p>
+        
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&lt?php
+$imie = $_POST['imie'];
+$nazwisko = $_POST['nazwisko'];
+echo "Witaj, $imie $nazwisko";
+?>
+            </code></pre>
+        </div>
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>

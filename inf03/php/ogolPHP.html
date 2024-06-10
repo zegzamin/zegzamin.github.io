@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP - Materiały</title>
+    <link rel="stylesheet" href="stylePHP.css">
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>PHP</i>! Tutaj są materiały, które pomogą się przygotować z PHP!</h1>
+    </header>
+
+    <section id="tekst">
+        <h1>PHP - danie główne</h1>
+        <p>PHP jest nieodłącznym elementem arkuszy egzaminacyjnych. Szansa (wg niezależnego instytutu ChGW) na otrzymanie PHP na egzaminie zawodowym wynosi okoto 80%. PHP jest językiem interpretowanym przez serwer, dlatego do jego obsługi nie wystarczy przeglądarka internetowa, a serwer, w naszym przypadku aplikacja Xampp. PHP jest językiem backendowym, więc w nim będą domyślnie działy się operacje, które nie mają na celu edycji obecnego stanu strony, a dodanie jakichś elementów, usunięcie czegoś z bazy, obliczenie i zwrócenie wyniku i tak dalej.</p>
+
+        <h1>PHP - ciekawostki egzaminacyjne</h1>
+        <p>W pisaniu kodu PHP bardzo pomocne są "ściągi" znajdujące się na dole każdego arkusza. Tam znajdują się wszystkie potrzebne funkcje dotyczące połączenia z bazą MySQL, a gdy jest to wymagane - także dokładna dokumentacja ciasteczek. Jest to o tyle pomocne, że w sytuacji, gdy w głowie będzie wyłącznie wartość null, możesz odnieść się do ściągi, która przypomni Ci ewentualne braki.</p>
+
+        <h1>Podstawy PHP</h1>
+        <p>Każdy plik PHP ma rozszerzenie .php. Aby byt poprawny, należy dać znać serwerowi, że kod, który podamy, będzie w tym języku, zupełnie jak to było w przypadku HTMLa. Należy rozpocząć plik z użyciem tagu otwierającego &lt?php i zamknąć plik tagiem ?>. Pomiędzy tymi tagami będziemy pisać nasz kod.</p>
+        
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>&lt?php
+//komentarz
+?></code></pre>
+        </div>
+
+        <h1>Zmienne w PHP</h1>
+        <p>PHP, w przeciwieństwie do języków typu C, C++ jest językiem, w którym zmienne automatycznie przyjmują określony typ. Na przykład, nie musisz definiować, że zmienna o nazwie liczba to będzie int. Wystarczy, że utworzysz tą zmienną i nadasz jej wartość liczbową. Aby utworzyć zmienną w języku PHP, należy użyć symbolu $ i podać jej nazwę, na przykład $egzamin utworzy zmienną o nazwie egzamin.</p>
+
+        <h1>Instrukcje warunkowe w PHP</h1>
+        <p>Operacje w dowolnym języku programowania wykonywane są czasem wyłącznie przy spełnieniu danego warunku, np. zmienna ma wartość większą niż 18, zmienna ma wartość równą "ezdamin” i tak dalej. Aby to osiągnąć, należy zdefiniować instrukcję warunkową if, a po tym słowie kluczowym w nawiasie podać warunek. Przykład: kod ma wykonać się tylko, gdy zmienna zdane jest większa niż 75%.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>&lt?php
+if ($zdane > 75) { //kod }
+?></code></pre>
+        </div>
+
+        <h1>Wypisywanie elementów na stronę</h1>
+        <p>Zupełnie jak w lesie, gdy krzykniemy coś głośno, to z użyciem różnych fizycznych zjawisk, dźwięk będzie słyszalny w wielu miejscach. Zjawisko to nazywa się echem. Taką też nazwę nosi funkcja do wypisywania tekstu na stronę - echo. Aby użyć tą funkcję, należy po słowie kluczowym echo podać tekst (bądź zmienną), którą chcemy wypisać na ekran. Możemy również podawać kod HTML do echo - wtedy na stronie pojawi się element o danym znaczniku.</p>
+
+        <h1>Pętla for - cykliczne działanie</h1>
+        <p>Pętla for służy do wykonywania danego kodu określoną przez nas ilość razy. Jej składnia wygląda następująco: for(zmienna, na której będziemy operować, warunek zakończenia (ilość razy), zwiększenie o 1 przy każdym ruchu pętli)</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>for ($i = 1; $i <= 10; $i++) {
+    echo $i;
+}</code></pre>
+        </div>
+
+        <h1>!!! Kod umieszczamy w folderze htdocs !!!</h1>
+
+        <h1>Połączenie z bazą danych</h1>
+        <p>Obowiązkowym elementem każdego arkusza z PHP jest ustawienie połączenia z bazą danych i wykonanie na niej pewnych kwerend (najczęściej z zadania 1, czyli kwerend na PHPMyAdmin). Każde połączenie składa się z czterech etapów:</p>
+        <ul>
+            <li>rozpoczęcie, zalogowanie i wybranie bazy danych</li>
+            <li>wysłanie kwerendy</li>
+            <li>odebranie wyników</li>
+            <li>zamknięcie</li>
+        </ul>
+
+        <h1>Połączenie z bazą danych</h1>
+        <p>Połączenie przypisywane jest do pewnej zmiennej. To bardzo ważny krok, ponieważ zawiera ona parametry naszego połączenia z bazą, które będą potrzebne nam w następnym kroku. Następnie, musimy wysłać do bazy kwerendę - realizuje się to za pomocą funkcji $wynik = mysqli_query($polaczenie, "kwerenda"). Pierwszym elementem zawsze będzie zmienna, którą zdefiniowaliśmy sobie slajd wcześniej, czyli połączenie. Wynik kwerendy też wrzucamy do zmiennej - będziemy mogli bowiem operować w pętli while na tych wynikach.</p>
+
+        <h1>Wypisywanie rekordów na ekran</h1>
+        <p>Jeżeli połączenie było poprawne, a kwerenda zwróciła jakieś rekordy, musimy wypisać je na ekran. Będzie to odbywało się zawsze w postaci pętli while z funkcją mysqli_fetch_row, która będzie pobierać kolejne rekordy z wyniku uzyskanego slajd wcześniej:</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>while ($row = mysqli_fetch_row($wynik)) {
+    //kod
+}</code></pre>
+        </div>
+
+        <h1>Wypisywanie rekordów na ekran</h1>
+        <p>Pętla while będzie wykonywać się do momentu, aż zmienna $row nie będzie pusta, czyli innymi słowy - gdy wypiszemy już wszystkie rekordy na ekran. Aby je wypisać, musimy skorzystać z echo oraz odwołać się do kolejnych kolumn rekordów za pomocą zmiennej $row[0]. Indeksujemy od 0 - więc 0 będzie pierwszą kolumną rekordu, np. id, 1 będzie drugą kolumną, np. imie, 2 - trzecią, czyli nazwisko i tak dalej.</p>
+
+        <h1>Zamykanie połączenia z bazą</h1>
+        <p>Jeżeli wszystkie elementy zostaną wykonane, należy zamknąć połączenie z bazą danych. Korzysta się więc z funkcji mysqli_close($polaczenie). Po tym połączenie zostanie automatycznie zamknięte.</p>
+
+        <h1>Polecenia:</h1>
+        <ul>
+            <li>Skrypt łączy się z serwerem bazodanowym na localhost, użytkownik root bez hasła, baza danych o nazwie egzamin</li>
+            <li>Skrypt wysyła do bazy danych zapytanie 1 (kwerendy.txt)</li>
+            <li>Dane otrzymane z bazy są umieszczane w kolejnych wierszach tabeli, w odpowiednich komórkach</li>
+            <li>Po wykonaniu operacji na bazie skrypt zamyka połączenie z serwerem</li>
+        </ul>
+
+        <h2>Kwerenda 1:</h2>
+        <p>SELECT czas, kierunek, nr_rejsu, status_lotu FROM przyloty ORDER BY czas ASC;</p>
+
+        <h1>INSERT/UPDATE w PHP</h1>
+        <p>Kwerendy INSERT/UPDATE nie będą różnić się wiele od tych, które przygotowywaliśmy w lekcji poprzedniej - nie będziemy tym razem pobierać wyników (bo nie otrzymamy nic ważnego), a jedynie wrzucać nowe rekordy do bazy. Obie te kwerendy będą wiązać się z otrzymaniem jakichś danych z formularza, który wypełnia użytkownik. Aby uzyskać te dane, musimy skorzystać ze zmiennych $_GET i $_POST, zależnie od metody formularza.</p>
+
+        <h1>Zmienne predefiniowane $_GET i $_POST</h1>
+        <p>Dane wpisane w formularz trafiają do odpowiedniej zmiennej superglobalnej $_GET lub $_POST, w zależności od metody formularza - GET lub POST. Najczęściej, na egzaminie będziemy mieli do czynienia z tą drugą (metoda POST - niejawne wysyłanie danych). Zmienne $_GET i $_POST to tablice, czyli takie zmienne, w których mamy kilka wartości, do których odwołujemy się za pomocą nazwy pola z formularza (atrybut name).</p>
+
+        <h1>Pobieranie danych z $_GET i $_POST</h1>
+        <p>Aby móc odczytać daną wartość z formularza, należy sprawdzić, czy pole tekstowe posiada atrybut name i ustawić jego wartość. Wtedy możemy pobrać wartość tego pola do zmiennej w taki sposób:</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>$wartosc = $_POST["nazwa_pola"];</code></pre>
+        </div>
+        <p>Wtedy do zmiennej $wartosc zostanie przypisana wartość z pola o określonej nazwie. Identycznie wygląda to w przypadku $_GET.</p>
+
+        <h1>Obsługa pustego formularza</h1>
+        <p>Na niektórych egzaminach, gdy pojawia się formularz dodający do bazy nowe rekordy, pojawia się wymaganie, że jeśli przynajmniej jedno pole edycyjne jest puste, nie wykonuje się akcja. Aby to spełnić, należy skorzystać z if (!empty(nazwa_zmiennej)). Metoda empty zwraca prawdę, jeżeli zmienna jest pusta - dlatego sprawdzamy, czy tak nie jest (dlatego stawiamy! jako negacje). !empty wykona się tylko wtedy, gdy zmienna nie jest pusta, czyli dokładnie tak, jak chcieliśmy.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>&lt?php
+if (!empty($_POST['imie'])) {
+    // wykonaj kod, gdy pole imie nie jest puste
+}
+?></code></pre>
+        </div>
+
+        <p>Jest uruchamiany po wypełnieniu formularza i wciśnięciu przycisku REZERWUJ. Nie jest wymagane sprawdzenie Wypisuje tekst "Dodano rezerwację do bazy". Łączy się z serwerem bazodanowym na localhost, użytkownik root bez hasła, baza danych o nazwie baza. Pobiera dane z formularza. Wysyła do bazy danych zapytanie wstawiające rekord do tabeli rezerwacje z danymi pobranymi z formularza. Na końcu działania skrypt zamyka połączenie z serwerem.</p>
+
+        <h1>Cookies</h1>
+
+        <h1>Krótko o cookies</h1>
+        <p>Cookie to plik zapisywany po stronie przeglądarki, który zachowuje dane określone przez serwer przez określony czas. Są one odtwarzane za każdym razem, gdy połączymy się z danym serwerem. Na tej zasadzie można obsługiwać sesje, czyli na przykład użytkownik może dostać ciasteczko, że już odwiedził daną stronę, przez co zostaną wyświetlone mu nieco inne rzeczy.</p>
+
+        <h1>Utworzenie nowego ciasteczka</h1>
+        <p>Aby utworzyć nowe ciasteczko dla użytkownika w PHP, należy skorzystać z metody setcookie z parametrami: nazwa ciasteczka, wartość, time() + ilość sekund, przez którą ma być aktywne ciasteczko, "/", czyli znak, że ciasteczko będzie aktywne na całej stronie.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>setcookie("odwiedzil", 1, time() + 600, "/");</code></pre>
+        </div>
+        <p>Przykład: Utwórz ciasteczko o nazwie "odwiedzil" z wartością 1 na 10 minut (600 sekund). Ciasteczko zostało utworzone poprawnie i jest widoczne w panelu developerskim przeglądarki.</p>
+
+        <h1>Sprawdzenie, czy ciasteczko istnieje</h1>
+        <p>Jeżeli ciasteczko zostało już utworzone, możemy sprawdzić to za pomocą metody isset, która sprawdza, czy zmienna posiada jakąś wartość oraz zmiennej $_COOKIE, która posiada wszystkie utworzone ciasteczka. Odwołujemy się do niej identycznie jak do zmiennej $_GET/POST, czyli poprzez nawiasy kwadratowe, w których wpisujemy nazwę ciasteczka.</p>
+        <p>Sprawdźmy, czy ciasteczko utworzone wcześniej działa:</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>isset($_COOKIE["odwiedzil"]);</code></pre>
+        </div>
+
+        <h1>Przykład działania ciasteczek</h1>
+        <p>Gdy odwiedzający wejdzie na stronę pierwszy raz zakładane jest ciasteczko z czasem trwania 2 godziny od utworzenia oraz wyświetlany jest w paragrafie, czcionką pogrubioną, komunikat: „Dzień dobry! Strona lotniska używa ciasteczek". Jeżeli odwiedzający w ciągu 2 godzin od poprzedniego wejścia wejdzie ponownie na stronę wyświetlany jest w paragrafie, czcionką pochyloną, komunikat „Witaj ponownie na stronie lotniska".</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

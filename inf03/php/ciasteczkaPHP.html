@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciasteczka - PHP</title>
+    <link rel="stylesheet" href="stylePHP.css">
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>PHP</i>! Tutaj są materiały, które pomogą się przygotować z PHP!</h1>
+    </header>
+
+    <section id="tekst">
+        <h1>Ciasteczka w PHP</h1>
+        <p>Ciasteczka (ang. cookies) to małe pliki przechowywane na komputerze użytkownika, które mogą być używane do przechowywania danych użytkownika na różnych stronach lub sesjach.</p>
+
+        <h1>Tworzenie ciasteczka</h1>
+        <p>Aby utworzyć ciasteczko w PHP, używamy funkcji setcookie().</p>
+        
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&lt?php
+setcookie("username", "Jan Kowalski", time() + (86400 * 30), "/");
+?>
+            </code></pre>
+        </div>
+
+        <h1>Odczytywanie ciasteczka</h1>
+        <p>Aby odczytać ciasteczko, używamy superglobalnej tablicy $_COOKIE.</p>
+
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&lt?php
+if(isset($_COOKIE["username"])) {
+    echo "Witaj, " . $_COOKIE["username"];
+} else {
+    echo "Ciasteczko nie jest ustawione!";
+}
+?>
+            </code></pre>
+        </div>
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>
+
+ 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Połączenie z bazą danych - PHP</title>
+    <link rel="stylesheet" href="stylePHP.css">
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>PHP</i>! Tutaj są materiały, które pomogą się przygotować z PHP!</h1>
+    </header>
+
+    <section id="tekst">
+        <h1>Połączenie z bazą danych</h1>
+        <p>Obowiązkowym elementem każdego arkusza z PHP jest ustawienie połączenia z bazą danych i wykonanie na niej pewnych kwerend (najczęściej z zadania 1, czyli kwerend na PHPMyAdmin).</p>
+        <p>Każde połączenie składa się z czterech etapów: rozpoczęcie, zalogowanie i wybranie bazy danych, wysłanie kwerendy, odebranie wyników, zamknięcie.</p>
+
+        <h1>Przykład połączenia</h1>
+        <p>Połączenie przypisywane jest do pewnej zmiennej. To bardzo ważny krok, ponieważ zawiera ona parametry naszego połączenia z bazą, które będą potrzebne nam w następnym kroku.</p>
+        
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&lt?php
+$polaczenie = mysqli_connect('localhost', 'root', '', 'egzamin');
+if (!$polaczenie) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+            </code></pre>
+        </div>
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>

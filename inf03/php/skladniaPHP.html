@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Składnia PHP</title>
+    <link rel="stylesheet" href="stylePHP.css">
+    <link rel="stylesheet" href="styleKod.css">
+</head>
+<body>
+    <header>
+        <h1>Witam w <i>PHP</i>! Tutaj są materiały, które pomogą się przygotować z PHP!</h1>
+    </header>
+
+    <section id="tekst">
+        <h1>Składnia PHP</h1>
+        <p>PHP jest językiem interpretowanym przez serwer, dlatego do jego obsługi nie wystarczy przeglądarka internetowa, a serwer, w naszym przypadku aplikacja Xampp. PHP jest językiem backendowym, więc w nim będą domyślnie działy się operacje, które nie mają na celu edycji obecnego stanu strony, a dodanie jakichś elementów, usunięcie czegoś z bazy, obliczenie i zwrócenie wyniku i tak dalej.</p>
+        
+        <h1>Podstawy PHP</h1>
+        <p>Każdy plik PHP ma rozszerzenie .php. Aby byt poprawny, należy dać znać serwerowi, że kod, który podamy, będzie w tym języku, zupełnie jak to było w przypadku HTMLa. Należy rozpocząć plik z użyciem tagu otwierającego &lt?php i zamknąć plik tagiem ?>. Pomiędzy tymi tagami będziemy pisać nasz kod.</p>
+        
+        <div class="kontener-kod">
+            <button class="kopiuj-przycisk" onclick="copyToClipboard(this)">Kopiuj</button>
+            <pre><code>
+&lt?php
+//komentarz
+?>
+            </code></pre>
+        </div>
+
+        <h1>Zmienne w PHP</h1>
+        <p>PHP, w przeciwieństwie do języków typu C, C++ jest językiem, w którym zmienne automatycznie przyjmują określony typ. Na przykład, nie musisz definiować, że zmienna o nazwie liczba to będzie int. Wystarczy, że utworzysz tą zmienną i nadasz jej wartość liczbową. Aby utworzyć zmienną w języku PHP, należy użyć symbolu $ i podać jej nazwę.</p>
+    </section>
+
+    <footer>    
+        <i><p> Strona wykonana przez: <a href="https://github.com/szmurk0"> szmurk0 </a></p></i>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </footer>
+</body>
+</html>
